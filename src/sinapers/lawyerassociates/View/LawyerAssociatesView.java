@@ -37,6 +37,7 @@ public class LawyerAssociatesView {
         setWorkbookAndSheet();
         printLawyerName();
         printHeaders(sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2));
+        printLawyerAssociates();
         saveFile();
     }
 
@@ -59,37 +60,40 @@ public class LawyerAssociatesView {
         cell.getCellStyle().setFont(fontBold);
     }
 
-    private void printLawyerAssociates() {
-        Integer initialRow = Integer.valueOf(Env.get("initialRow"))  + 2;
+    private void printValueIfSelected(XSSFRow row, String name, String value, boolean bold) {
+        Short cellNumber = row.getLastCellNum() != -1?row.getLastCellNum():0;
         
-        
-        Integer count = 0;        
-        for (Associate associate : associates) {
-            count++;
-            
-            XSSFRow row = sheet.createRow(initialRow + count);
-            
-            Integer countCells = -1;
-            
-            
-        }
-    }
-    
-    private void printHeaders(XSSFRow row){
-        Integer count = -1;
-        for (Map.Entry<String, JCheckBox> entry : collumnsToPrint.entrySet()) {
-            String key = entry.getKey();
-            JCheckBox collumn = entry.getValue();
-            count++;
-            
-            XSSFCell cell = row.createCell(count);
-            cell.setCellValue(collumn.getText());
-            
-            XSSFFont font =  workbook.createFont();
-            font.setBold(true);
-            
+        XSSFCell cell = row.createCell(cellNumber);
+        if (collumnsToPrint.get(name).isSelected()) {
+            cell.setCellValue(value);
+
+            XSSFFont font = workbook.createFont();
+            font.setBold(bold);
             cell.getCellStyle().setFont(font);
         }
+    }
+
+    private void printLawyerAssociates() {
+        Integer initialRow = Integer.valueOf(Env.get("initialRow")) + 2;
+
+        Integer count = 0;
+        for (Associate associate : associates) {
+            count++;
+
+            XSSFRow row = sheet.createRow(initialRow + count);
+
+            printValueIfSelected(row, "name", associate.getNome(), false);
+            printValueIfSelected(row, "cpf", associate.getCpf(), false);
+            printValueIfSelected(row, "rg", associate.getRg(), false);
+            printValueIfSelected(row, "birthDay", associate.getDtNascimento(), false);
+        }
+    }
+
+    private void printHeaders(XSSFRow row) {
+        printValueIfSelected(row, "name", "Nome", true);
+        printValueIfSelected(row, "cpf", "CPF", true);
+        printValueIfSelected(row, "rg", "RG", true);
+        printValueIfSelected(row, "birthDay", "Data de Nascimento", true);
     }
 
     private void saveFile() {
