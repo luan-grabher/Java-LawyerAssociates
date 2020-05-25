@@ -22,7 +22,8 @@ public class UserInputsView {
         return Integer.valueOf(laywer.replaceAll("[^0-9]", ""));
     }
 
-    public static JCheckBox[] getCollumnsToPrint() {
+    public static JCheckBox[] getCollumnsToPrint() {       
+        
         JCheckBox name = new JCheckBox("Nome");
         JCheckBox cpf = new JCheckBox("CPF");
         JCheckBox rg = new JCheckBox("RG");
@@ -37,7 +38,9 @@ public class UserInputsView {
 
         Object[] params = {"Escolha as colunas para imprimir:", checkBoxes};
 
-        int n = JOptionPane.showConfirmDialog(null, params, "Escolha as colunas que serão impressas:", JOptionPane.OK_OPTION);
+        int n = JOptionPane.showConfirmDialog(null, params, "Escolha as colunas que serão impressas:", JOptionPane.DEFAULT_OPTION);
+        
+        System.out.println("Cpf selecionado: " + cpf.getText());
 
         return checkBoxes;
     }
