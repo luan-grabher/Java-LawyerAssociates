@@ -19,6 +19,8 @@ public class SinapersLawyerAssociates {
         List<Executavel> execs = new ArrayList<>();
         execs.add(controller.new selectLaywer());
         execs.add(controller.new selectCollumnsToPrint());
+        execs.add(controller.new setAssociatesList());
+        execs.add(controller.new printAssociatesList());
         
         Execution exec =  new Execution("Pegar filtro de advogados");       
         exec.setExecutaveis(execs);
