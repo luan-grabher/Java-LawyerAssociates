@@ -11,6 +11,9 @@ import tpsdb.Model.Tps_Model;
 
 public class LawsuitModel {
 
+    /**
+     *  @return Os processos do advogado informado
+     */
     public List<Associate> getLawsuitsAssociates(Long lawyerCode) {
         //get tables
         List<Associate> associates = Tps_Model.getAssociates();
@@ -23,6 +26,9 @@ public class LawsuitModel {
         return getAssociatesList(associates, lawyerLawsuits);
     }
 
+    /**
+     *  @return Os associados dos processos informados 
+     */
     private List<Associate> getAssociatesList(List<Associate> associates, List<tpsdb.Model.Entities.Lawsuit> lawyerLawsuits) {
         //Procura objectos de associado
         List<Associate> lawsuitsAssociates = new ArrayList<>();
