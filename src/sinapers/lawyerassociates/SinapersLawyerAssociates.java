@@ -17,8 +17,9 @@ public class SinapersLawyerAssociates {
     
     public static boolean getUserInputs(){
         List<Executavel> execs = new ArrayList<>();
-        execs.add(controller.new selectLaywer());
+        execs.add(controller.new selectLaywer());        
         execs.add(controller.new selectCollumnsToPrint());
+        execs.add(controller.new selectSaveFolder());
         execs.add(controller.new setAssociatesList());
         execs.add(controller.new printAssociatesList());
         

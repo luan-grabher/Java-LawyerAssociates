@@ -1,11 +1,13 @@
 package sinapers.lawyerassociates.Control;
 
+import Entity.Aviso;
 import Entity.Executavel;
 import java.io.File;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import sinapers.lawyerassociates.Model.LawsuitModel;
+import sinapers.lawyerassociates.View.LawyerAssociatesView;
 import sinapers.lawyerassociates.View.UserInputsView;
 import tpsdb.Model.Entities.Associate;
 
@@ -85,7 +87,11 @@ public class Controller {
 
         @Override
         public void run() {
+            LawyerAssociatesView view = new LawyerAssociatesView(associates, collumnsToPrint, laywer, saveFolder);
             
+            view.createFile();
+            
+            throw new Aviso("Arquivo salvo em: " + saveFolder.getAbsolutePath());
         }
         
     }
