@@ -4,6 +4,7 @@ import Entity.Aviso;
 import Entity.Executavel;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import sinapers.lawyerassociates.Model.LawsuitModel;
@@ -15,7 +16,7 @@ public class Controller {
 
     private String laywer = "";
     private Integer laywerCode = 0;
-    private JCheckBox[] collumnsToPrint;
+    private Map<String, JCheckBox> collumnsToPrint;
     private List<Associate> associates;
     
     private File saveFolder;

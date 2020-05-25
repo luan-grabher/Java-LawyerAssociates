@@ -1,5 +1,7 @@
 package sinapers.lawyerassociates.View;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
@@ -19,7 +21,7 @@ public class UserInputsView {
         return (String) JOptionPane.showInputDialog(null, "Escolha um advogado:", "Escolha o advogado", JOptionPane.QUESTION_MESSAGE, null, laywers, laywers[0]);
     }
 
-    public static JCheckBox[] getCollumnsToPrint() {
+    public static Map<String, JCheckBox> getCollumnsToPrint() {
 
         JCheckBox name = new JCheckBox("Nome");
         JCheckBox cpf = new JCheckBox("CPF");
@@ -32,6 +34,12 @@ public class UserInputsView {
         birthDay.setSelected(true);
 
         JCheckBox[] checkBoxes = new JCheckBox[]{name, cpf, rg, birthDay};
+        
+        Map<String, JCheckBox> checkBoxMap = new HashMap<>();
+        checkBoxMap.put("name", name);
+        checkBoxMap.put("cpf", cpf);
+        checkBoxMap.put("rg", rg);
+        checkBoxMap.put("birthDay", birthDay);
 
         Object[] params = {"Escolha as colunas para imprimir:", checkBoxes};
 
@@ -39,6 +47,6 @@ public class UserInputsView {
 
         System.out.println("Cpf selecionado: " + cpf.getText());
 
-        return checkBoxes;
+        return checkBoxMap;
     }
 }
