@@ -14,7 +14,7 @@ public class LawsuitModel {
     /**
      *  @return Os processos do advogado informado
      */
-    public List<Associate> getLawsuitsAssociates(Long lawyerCode) {
+    public static List<Associate> getLawsuitsAssociates(Long lawyerCode) {
         //get tables
         List<Associate> associates = Tps_Model.getAssociates();
         List<tpsdb.Model.Entities.Lawsuit> lawSuits = Tps_Model.getLawsuits();
@@ -29,7 +29,7 @@ public class LawsuitModel {
     /**
      *  @return Os associados dos processos informados 
      */
-    private List<Associate> getAssociatesList(List<Associate> associates, List<tpsdb.Model.Entities.Lawsuit> lawyerLawsuits) {
+    private static List<Associate> getAssociatesList(List<Associate> associates, List<tpsdb.Model.Entities.Lawsuit> lawyerLawsuits) {
         //Procura objectos de associado
         List<Associate> lawsuitsAssociates = new ArrayList<>();
         for (tpsdb.Model.Entities.Lawsuit advogadoProcesso : lawyerLawsuits) {
