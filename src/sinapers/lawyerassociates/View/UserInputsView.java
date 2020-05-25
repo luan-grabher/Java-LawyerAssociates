@@ -1,4 +1,4 @@
-package View;
+package sinapers.lawyerassociates.View;
 
 import javax.swing.JOptionPane;
 

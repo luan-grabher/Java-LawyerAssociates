@@ -1,7 +1,7 @@
-package Control;
+package sinapers.lawyerassociates.Control;
 
 import Entity.Executavel;
-import View.UserInputsView;
+import sinapers.lawyerassociates.View.UserInputsView;
 
 public class Controller {
     private String lawyerSearchName = "";
