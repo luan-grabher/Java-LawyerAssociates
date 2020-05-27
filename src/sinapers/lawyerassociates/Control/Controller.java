@@ -53,6 +53,10 @@ public class Controller {
 
             //Cria Lista com advogados e codigos
             String[] lawyersList = lawyerModel.filterLawyersByString(lawyerSearchName);
+            
+            if(lawyersList.length == 0){
+                throw new Error("Nenhum advogado encontrado que tenha '" + lawyerSearchName + "' no nome.");
+            }
 
             laywer = UserInputsView.getLawyerFromArray(lawyersList);
             laywerCode = Integer.valueOf(laywer.replaceAll("[^0-9]", ""));

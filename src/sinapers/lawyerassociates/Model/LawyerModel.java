@@ -11,7 +11,7 @@ public class LawyerModel {
         
         List<Lawyer> lawyers = Tps_Model.getLawyers();
         for (Lawyer lawyer : lawyers) {
-            if(lawyer.getName().contains(filter)){
+            if(lawyer.getName().toLowerCase().contains(filter.toLowerCase())){
                 lawyersList.add("(" + lawyer.getCode() + ") " + lawyer.getName());
             }
         }
