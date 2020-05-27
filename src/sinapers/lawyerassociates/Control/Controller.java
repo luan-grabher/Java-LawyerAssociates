@@ -1,6 +1,6 @@
 package sinapers.lawyerassociates.Control;
 
-import Entity.Aviso;
+import Entity.Warning;
 import Entity.Executavel;
 import java.io.File;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Controller {
     public class selectLaywer extends Executavel {
 
         public selectLaywer() {
-            nome = "Selecionando o advogado";
+            name = "Selecionando o advogado";
         }
 
         @Override
@@ -43,7 +43,7 @@ public class Controller {
     public class selectCollumnsToPrint extends Executavel {
 
         public selectCollumnsToPrint() {
-            nome = "Selecionando colunas para imprimir";
+            name = "Selecionando colunas para imprimir";
         }
 
         @Override
@@ -56,7 +56,7 @@ public class Controller {
     public class selectSaveFolder extends Executavel{
 
         public selectSaveFolder() {
-            nome = "Selecionando a pasta para salvar o arquivo";
+            name = "Selecionando a pasta para salvar o arquivo";
         }
 
         @Override
@@ -70,7 +70,7 @@ public class Controller {
     public class setAssociatesList extends Executavel {
 
         public setAssociatesList() {
-            nome = "Definindo lista de associados do advogado selecionado";
+            name = "Definindo lista de associados do advogado selecionado";
         }
 
         @Override
@@ -83,7 +83,7 @@ public class Controller {
     public class printAssociatesList extends Executavel {
 
         public printAssociatesList() {
-            nome = "Criando arquivo com lista de associados";
+            name = "Criando arquivo com lista de associados";
         }
 
         @Override
@@ -92,7 +92,7 @@ public class Controller {
             
             view.createFile();
             
-            throw new Aviso("Arquivo salvo em: " + saveFolder.getAbsolutePath());
+            throw new Warning("Arquivo salvo em: " + saveFolder.getAbsolutePath());
         }
         
     }

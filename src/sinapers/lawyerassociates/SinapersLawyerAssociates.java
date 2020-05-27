@@ -24,10 +24,10 @@ public class SinapersLawyerAssociates {
         execs.add(controller.new printAssociatesList());
         
         Execution exec =  new Execution("Pegar filtro de advogados");       
-        exec.setExecutaveis(execs);
-        exec.rodarExecutaveis();
+        exec.setExecutables(execs);
+        exec.runExecutables();
         
-        exec.finalizar(false);
+        exec.endExecution(false);
         
         return exec.hasErrorBreak();
     }
