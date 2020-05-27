@@ -11,6 +11,7 @@ import sinapers.lawyerassociates.Model.LawsuitModel;
 import sinapers.lawyerassociates.View.LawyerAssociatesView;
 import sinapers.lawyerassociates.View.UserInputsView;
 import tpsdb.Model.Entities.Associate;
+import tpsdb.Model.Tps_Model;
 
 public class Controller {
 
@@ -20,6 +21,21 @@ public class Controller {
     private List<Associate> associates;
     
     private File saveFolder;
+    
+    public class defineDatabaseTables extends Executavel{
+
+        public defineDatabaseTables() {
+            name = "Buscando dados do banco de dados";
+        }
+
+        @Override
+        public void run() {
+            Tps_Model.setAssociates(); //Associados
+            Tps_Model.setLawyers(); // Advogados
+            Tps_Model.setLawsuits(); // Processos dos advogados            
+        }
+        
+    }
     
     public class selectLaywer extends Executavel {
 

@@ -33,7 +33,7 @@ public class LawyerAssociatesView {
         lawyerName = lawyer.replaceAll("[^A-Za-z ]", "").trim();
     }
 
-    public void createFile() {
+    public void createFile() {        
         setWorkbookAndSheet();
         printLawyerName();
         printHeaders(sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2));
@@ -61,8 +61,8 @@ public class LawyerAssociatesView {
     }
 
     private void printValueIfSelected(XSSFRow row, String name, String value, boolean bold) {
-        Short cellNumber = row.getLastCellNum() != -1?row.getLastCellNum():0;
-        
+        Short cellNumber = row.getLastCellNum() != -1 ? row.getLastCellNum() : 0;
+
         XSSFCell cell = row.createCell(cellNumber);
         if (collumnsToPrint.get(name).isSelected()) {
             cell.setCellValue(value);
