@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import sinapers.lawyerassociates.Model.LawsuitModel;
+import sinapers.lawyerassociates.Model.LawyerModel;
 import sinapers.lawyerassociates.View.LawyerAssociatesView;
 import sinapers.lawyerassociates.View.UserInputsView;
 import tpsdb.Model.Entities.Associate;
@@ -19,6 +20,8 @@ public class Controller {
     private Integer laywerCode = 0;
     private Map<String, JCheckBox> collumnsToPrint;
     private List<Associate> associates;
+    
+    private LawyerModel lawyerModel = new LawyerModel();
     
     private File saveFolder;
     
@@ -49,9 +52,9 @@ public class Controller {
             String lawyerSearchName = UserInputsView.getLawyerSearchName();
 
             //Cria Lista com advogados e codigos
-            String[] laywers = new String[]{"(9) Aline", "(19) Debora"};
+            String[] lawyersList = lawyerModel.filterLawyersByString(lawyerSearchName);
 
-            laywer = UserInputsView.getLaywerFromArray(laywers);
+            laywer = UserInputsView.getLawyerFromArray(lawyersList);
             laywerCode = Integer.valueOf(laywer.replaceAll("[^0-9]", ""));
         }
     }

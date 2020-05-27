@@ -17,7 +17,7 @@ public class UserInputsView {
         }
     }
 
-    public static String getLaywerFromArray(String[] laywers) {
+    public static String getLawyerFromArray(String[] laywers) {
         return (String) JOptionPane.showInputDialog(null, "Escolha um advogado:", "Escolha o advogado", JOptionPane.QUESTION_MESSAGE, null, laywers, laywers[0]);
     }
 
