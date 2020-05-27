@@ -2,6 +2,7 @@ package sinapers.lawyerassociates.View;
 
 import JExcel.JExcel;
 import SimpleDotEnv.Env;
+import SimpleView.View;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -33,11 +34,16 @@ public class LawyerAssociatesView {
         lawyerName = lawyer.replaceAll("[^A-Za-z ]", "").trim();
     }
 
-    public void createFile() {        
+    public void createFile() {
+        System.out.println("Criando Workbook");
         setWorkbookAndSheet();
+        System.out.println("Imprimindo nome advogado");
         printLawyerName();
+        System.out.println("Imprimindo cabeçalhos");
         printHeaders(sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2));
+        System.out.println("Imprimindo associados");
         printLawyerAssociates();
+        System.out.println("Salvando arquivo");
         saveFile();
     }
 
@@ -46,6 +52,7 @@ public class LawyerAssociatesView {
             workbook = new XSSFWorkbook(new File("template.xlsx"));
             sheet = workbook.getSheetAt(0);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -61,10 +68,10 @@ public class LawyerAssociatesView {
     }
 
     private void printValueIfSelected(XSSFRow row, String name, String value, boolean bold) {
-        Short cellNumber = row.getLastCellNum() != -1 ? row.getLastCellNum() : 0;
-
-        XSSFCell cell = row.createCell(cellNumber);
         if (collumnsToPrint.get(name).isSelected()) {
+            Short cellNumber = row.getLastCellNum() != -1 ? row.getLastCellNum() : 0;
+            XSSFCell cell = row.createCell(cellNumber);
+            
             cell.setCellValue(value);
 
             XSSFFont font = workbook.createFont();

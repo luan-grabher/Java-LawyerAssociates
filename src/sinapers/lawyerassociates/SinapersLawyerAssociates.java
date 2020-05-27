@@ -27,7 +27,7 @@ public class SinapersLawyerAssociates {
 
         exec.endExecution(false);
 
-        return exec.hasErrorBreak();
+        return !exec.hasErrorBreak();
     }
 
     public static boolean getUserInputs() {
@@ -43,7 +43,7 @@ public class SinapersLawyerAssociates {
 
         exec.endExecution(false);
 
-        return exec.hasErrorBreak();
+        return !exec.hasErrorBreak();
     }
 
 }

@@ -45,8 +45,6 @@ public class UserInputsView {
 
         int n = JOptionPane.showConfirmDialog(null, params, "Escolha as colunas que serão impressas:", JOptionPane.DEFAULT_OPTION);
 
-        System.out.println("Cpf selecionado: " + cpf.getText());
-
         return checkBoxMap;
     }
 }
