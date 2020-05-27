@@ -24,6 +24,8 @@ public class LawyerAssociatesView {
 
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
+    
+    private short lastCell = 0;
 
     public LawyerAssociatesView(List<Associate> associates, Map<String, JCheckBox> collumnsToPrint, String lawyer, File saveFolder) {
         this.associates = associates;
@@ -40,9 +42,11 @@ public class LawyerAssociatesView {
         System.out.println("Imprimindo nome advogado");
         printLawyerName();
         System.out.println("Imprimindo cabeçalhos");
-        printHeaders(sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2));
+        printHeaders();
         System.out.println("Imprimindo associados");
         printLawyerAssociates();
+        System.out.println("Auto size colls");
+        sizeCollumns();
         System.out.println("Salvando arquivo");
         saveFile();
     }
@@ -96,11 +100,21 @@ public class LawyerAssociatesView {
         }
     }
 
-    private void printHeaders(XSSFRow row) {
+    private void printHeaders() {
+        XSSFRow row = sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2);
+                
         printValueIfSelected(row, "name", "Nome", true);
         printValueIfSelected(row, "cpf", "CPF", true);
         printValueIfSelected(row, "rg", "RG", true);
         printValueIfSelected(row, "birthDay", "Data de Nascimento", true);
+        
+        lastCell = row.getLastCellNum();
+    }
+    
+    private void sizeCollumns(){
+        for (int i = 0; i < lastCell; i++) {
+            sheet.autoSizeColumn(i);
+        }
     }
 
     private void saveFile() {
