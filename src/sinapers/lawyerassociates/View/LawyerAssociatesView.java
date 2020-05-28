@@ -78,9 +78,11 @@ public class LawyerAssociatesView {
             
             cell.setCellValue(value);
 
-            XSSFFont font = workbook.createFont();
-            font.setBold(bold);
-            cell.getCellStyle().setFont(font);
+            if(bold){
+                XSSFFont font = workbook.createFont();
+                font.setBold(bold);
+                cell.getCellStyle().setFont(font);
+            }
         }
     }
 
