@@ -39,7 +39,7 @@ public class UserInputsView {
         idCountry.setSelected(false);
         idIpe.setSelected(false);
 
-        JCheckBox[] checkBoxes = new JCheckBox[]{name, cpf, rg, birthDay};
+        JCheckBox[] checkBoxes = new JCheckBox[]{name, cpf, rg, birthDay, deathDay,idCountry, idIpe};
         
         Map<String, JCheckBox> checkBoxMap = new HashMap<>();
         checkBoxMap.put("name", name);
