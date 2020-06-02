@@ -24,7 +24,7 @@ public class LawyerAssociatesView {
 
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    
+
     private short lastCell = 0;
 
     public LawyerAssociatesView(List<Associate> associates, Map<String, JCheckBox> collumnsToPrint, String lawyer, File saveFolder) {
@@ -75,10 +75,10 @@ public class LawyerAssociatesView {
         if (collumnsToPrint.get(name).isSelected()) {
             Short cellNumber = row.getLastCellNum() != -1 ? row.getLastCellNum() : 0;
             XSSFCell cell = row.createCell(cellNumber);
-            
+
             cell.setCellValue(value);
 
-            if(bold){
+            if (bold) {
                 XSSFFont font = workbook.createFont();
                 font.setBold(bold);
                 cell.getCellStyle().setFont(font);
@@ -99,21 +99,27 @@ public class LawyerAssociatesView {
             printValueIfSelected(row, "cpf", associate.getCpf(), false);
             printValueIfSelected(row, "rg", associate.getRg(), false);
             printValueIfSelected(row, "birthDay", associate.getDtNascimento(), false);
+            printValueIfSelected(row, "deathDay", associate.getDtObito(), false);
+            printValueIfSelected(row, "idCountry", associate.getMatriculaEstado().toString(), false);
+            printValueIfSelected(row, "idIpe", associate.getMatriculaIpe().toString(), false);
         }
     }
 
     private void printHeaders() {
         XSSFRow row = sheet.createRow(Integer.valueOf(Env.get("initialRow")) + 2);
-                
+
         printValueIfSelected(row, "name", "Nome", true);
         printValueIfSelected(row, "cpf", "CPF", true);
         printValueIfSelected(row, "rg", "RG", true);
         printValueIfSelected(row, "birthDay", "Data de Nascimento", true);
-        
+        printValueIfSelected(row, "deathDay", "Data Óbito", true);
+        printValueIfSelected(row, "idCountry", "Matricula Estado", true);
+        printValueIfSelected(row, "idIpe", "Matricula IPE", true);
+
         lastCell = row.getLastCellNum();
     }
-    
-    private void sizeCollumns(){
+
+    private void sizeCollumns() {
         for (int i = 0; i < lastCell; i++) {
             sheet.autoSizeColumn(i);
         }

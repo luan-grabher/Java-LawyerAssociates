@@ -27,11 +27,17 @@ public class UserInputsView {
         JCheckBox cpf = new JCheckBox("CPF");
         JCheckBox rg = new JCheckBox("RG");
         JCheckBox birthDay = new JCheckBox("Data de Nascimento");
+        JCheckBox deathDay = new JCheckBox("Data de Óbito");
+        JCheckBox idCountry = new JCheckBox("Matricula Estado");
+        JCheckBox idIpe = new JCheckBox("Matricula IPE");
 
         name.setSelected(true);
         cpf.setSelected(true);
         rg.setSelected(true);
         birthDay.setSelected(true);
+        deathDay.setSelected(false);
+        idCountry.setSelected(false);
+        idIpe.setSelected(false);
 
         JCheckBox[] checkBoxes = new JCheckBox[]{name, cpf, rg, birthDay};
         
@@ -40,6 +46,9 @@ public class UserInputsView {
         checkBoxMap.put("cpf", cpf);
         checkBoxMap.put("rg", rg);
         checkBoxMap.put("birthDay", birthDay);
+        checkBoxMap.put("deathDay", deathDay);
+        checkBoxMap.put("idCountry", idCountry);
+        checkBoxMap.put("idIpe", idIpe);
 
         Object[] params = {"Escolha as colunas para imprimir:", checkBoxes};
 
